@@ -10,6 +10,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+	if current_user && current_user.courses.include?(@course)
+		@attendance = Attendance.find_by(user:current_user, course:@course)
+	else
+		@attendance = Attendance.new
+		@attendance.course = @course
+	end
   end
 
   # GET /courses/new
