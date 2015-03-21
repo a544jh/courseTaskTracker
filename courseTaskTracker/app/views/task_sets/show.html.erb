@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @task_set.course_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task_set.name %>
+</p>
+
+<%= link_to 'Edit', edit_task_set_path(@task_set) %> |
+<%= link_to 'Back', task_sets_path %>

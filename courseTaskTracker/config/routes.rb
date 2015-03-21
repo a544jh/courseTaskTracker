@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :task_submissions
+
+  resources :tasks
+
+  resources :task_sets
+
   resources :attendances
 
   resources :courses

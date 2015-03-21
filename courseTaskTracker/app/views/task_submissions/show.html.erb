@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task_submission.user_id %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @task_submission.task_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @task_submission.state %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @task_submission.comment %>
+</p>
+
+<%= link_to 'Edit', edit_task_submission_path(@task_submission) %> |
+<%= link_to 'Back', task_submissions_path %>

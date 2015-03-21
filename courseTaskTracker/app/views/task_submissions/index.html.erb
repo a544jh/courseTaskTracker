@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Task Submissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Task</th>
+      <th>State</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task_submissions.each do |task_submission| %>
+      <tr>
+        <td><%= task_submission.user_id %></td>
+        <td><%= task_submission.task_id %></td>
+        <td><%= task_submission.state %></td>
+        <td><%= task_submission.comment %></td>
+        <td><%= link_to 'Show', task_submission %></td>
+        <td><%= link_to 'Edit', edit_task_submission_path(task_submission) %></td>
+        <td><%= link_to 'Destroy', task_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task submission', new_task_submission_path %>
