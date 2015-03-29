@@ -1,12 +1,17 @@
 language: ruby
-
 rvm:
- - 2.2.1
-
+- 2.2.1
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: bIeUHLGf5/XQmdihasSJ8K6M8CDP80D3zlfRIgQlgwvR6hdcjv1Pt/84hBBnIJ19uDwns7Md2cIbPEn+pr7iZmUAmPC82AUZdNdhxdL1XDYUX0pbUaMfEJakPiIYIVMQmOCOZ6XOxMYYF7CPuxlV5Sy37NOtK61c4IrtbRXvc0g=
+  app: sheltered-hamlet-4815
+  on:
+    repo: a544jh/courseTaskTracker
