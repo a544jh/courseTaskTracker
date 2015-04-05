@@ -15,6 +15,7 @@ class TaskSetsController < ApplicationController
   # GET /task_sets/new
   def new
     @task_set = TaskSet.new
+    @task_set.course_id = params[:course_id]
   end
 
   # GET /task_sets/1/edit
@@ -28,6 +29,11 @@ class TaskSetsController < ApplicationController
 
     respond_to do |format|
       if @task_set.save
+        if @task_set.tasks.empty?
+          @task_set.populate_with_empty_tasks(params[:taskcount])
+          redirect_to edit_task_set_path(id:@task_set.id)
+          return
+        end
         format.html { redirect_to @task_set, notice: 'Task set was successfully created.' }
         format.json { render :show, status: :created, location: @task_set }
       else
@@ -69,6 +75,6 @@ class TaskSetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_set_params
-      params.require(:task_set).permit(:course_id, :name)
+      params.require(:task_set).permit(:course_id, :name, :deadline, tasks_attributes: [:id, :description])
     end
 end

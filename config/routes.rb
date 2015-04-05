@@ -7,12 +7,14 @@ Rails.application.routes.draw do
 
   resources :attendances
 
-  resources :courses
+  resources :courses do
+    resources :task_sets
+  end
 
   resources :users
-  
+
   root 'tasks#index'
-  
+
   get 'signup', to: 'users#new'
   resource :session, only: [:new, :create, :delete]
   get 'signin', to: 'sessions#new'

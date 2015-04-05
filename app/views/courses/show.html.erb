@@ -21,7 +21,11 @@
 		<%= f.submit value:"Leave course", class:"btn btn-danger" %>
 	<% end %>
 <% end %>
+<% if current_user %>
+  <%= link_to "Add task set", new_course_task_set_path(course_id:@course.id), class:"btn btn-primary" %>
+<% end %>
 
+<br />
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

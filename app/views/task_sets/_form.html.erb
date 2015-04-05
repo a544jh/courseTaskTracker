@@ -12,13 +12,37 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.number_field :course_id %>
+    <%= f.hidden_field :course_id %>
   </div>
+  Course: <%= @task_set.course.name %>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :deadline %><br>
+    <%= f.datetime_field :deadline %>
+  </div>
+  <% if @task_set.tasks.empty? %>
+  <div class="field">
+    <%= label_tag(:taskcount, "Number of tasks") %><br>
+    <%= number_field_tag(:taskcount) %>
+  </div>
+  <% end %>
+  <% if not @task_set.tasks.empty? %>
+    <div class="field">
+      <h3>Tasks</h3>
+      <table class="table">
+        <thead><td>No</td><td>Description</td></thead>
+        <%= f.fields_for :tasks do |tf| %>
+          <tr>
+            <td><%= tf.object.taskno %></td>
+            <td><%= tf.text_area :description %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
