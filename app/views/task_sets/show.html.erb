@@ -10,5 +10,21 @@
   <%= @task_set.name %>
 </p>
 
+<p>
+  <strong>Deadline:</strong>
+  <%= @task_set.deadline %>
+</p>
+
+<h3>Tasks</h3>
+<table class="table">
+  <thead><th>No</th><th>Description</th></thead>
+  <% @task_set.tasks.each do |t| %>
+  <tr>
+    <td><%= t.taskno %></td>
+    <td><%= t.description %></td>
+  </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Edit', edit_task_set_path(@task_set) %> |
 <%= link_to 'Back', task_sets_path %>

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :deadline %><br>
-    <%= f.datetime_field :deadline %>
+    <%= datetime_select :task_set, :deadline %>
   </div>
   <% if @task_set.tasks.empty? %>
   <div class="field">
@@ -33,7 +33,7 @@
     <div class="field">
       <h3>Tasks</h3>
       <table class="table">
-        <thead><td>No</td><td>Description</td></thead>
+        <thead><th>No</th><th>Description</th></thead>
         <%= f.fields_for :tasks do |tf| %>
           <tr>
             <td><%= tf.object.taskno %></td>

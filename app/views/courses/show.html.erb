@@ -21,9 +21,35 @@
 		<%= f.submit value:"Leave course", class:"btn btn-danger" %>
 	<% end %>
 <% end %>
+
+<h3>Task sets</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Deadline</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.task_sets.each do |task_set| %>
+      <tr>
+        <td><%= task_set.name %></td>
+        <td><%= task_set.deadline %></td>
+        <td><%= link_to 'Show', task_set %></td>
+        <td><%= link_to 'Edit', edit_task_set_path(task_set) %></td>
+        <td><%= link_to 'Destroy', task_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <% if current_user %>
   <%= link_to "Add task set", new_course_task_set_path(course_id:@course.id), class:"btn btn-primary" %>
 <% end %>
+
 
 <br />
 

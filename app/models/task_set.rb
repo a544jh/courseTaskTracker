@@ -1,6 +1,6 @@
 class TaskSet < ActiveRecord::Base
 	belongs_to :course
-	has_many :tasks
+	has_many :tasks, dependent: :destroy
 	accepts_nested_attributes_for :tasks
 
 	def populate_with_empty_tasks(count)
