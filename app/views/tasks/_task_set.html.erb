@@ -1,0 +1,19 @@
+<div class="well">
+  <%= ts.course.name %> <br>
+  <%= ts.name%> <%= ts.deadline %>
+  <table>
+    <tr>
+  <% ts.tasks.each do |t| %>
+    <td><%= t.taskno %></td>
+  <% end %>
+    </tr>
+    <tr>
+    <% ts.tasks.each do |t| %>
+      <td>
+        <%= hidden_field_tag("taskstate[#{t.id}]", "undone") %>
+        <%= check_box_tag("taskstate[#{t.id}]", 'done', t.done_by?(current_user.id)) %>
+      </td>
+    <% end %>
+  </tr>
+</table>
+</div>

@@ -1,6 +1,20 @@
 class TaskSubmissionsController < ApplicationController
   before_action :set_task_submission, only: [:show, :edit, :update, :destroy]
 
+  def handle_dashboard
+    taskstates = params[:taskstate]
+    taskstates.each do |id, state|
+      sub = TaskSubmission.find_by(user_id:current_user.id, task_id:id)
+      if sub
+          sub.state = state
+          sub.save
+      else
+        sub = TaskSubmission.create(user_id:current_user.id, task_id:id, state:state)
+      end
+    end
+    redirect_to '/dashboard'
+  end
+
   # GET /task_submissions
   # GET /task_submissions.json
   def index
@@ -69,6 +83,6 @@ class TaskSubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_submission_params
-      params.require(:task_submission).permit(:user_id, :task_id, :state, :comment)
+      params.require(:task_submission).permit(:user_id, :task_id, :state, :comment, :taskstate)
     end
 end
