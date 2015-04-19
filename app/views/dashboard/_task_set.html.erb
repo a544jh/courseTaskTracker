@@ -4,12 +4,12 @@
   <table>
     <tr>
   <% ts.tasks.each do |t| %>
-    <td><%= t.taskno %></td>
+    <td class="task-<%= t.submission_state(current_user) %>"><%= t.taskno %></td>
   <% end %>
     </tr>
     <tr>
     <% ts.tasks.each do |t| %>
-      <td>
+      <td class="task-<%= t.submission_state(current_user) %>">
         <%= hidden_field_tag("taskstate[#{t.id}]", "undone") %>
         <%= check_box_tag("taskstate[#{t.id}]", 'done', t.done_by?(current_user.id)) %>
       </td>

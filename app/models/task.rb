@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
 	def submission_state(user_id)
 		sub = self.task_submissions.find_by(user_id:user_id)
 		if not sub
-			return false
+			return "undone"
 		end
 		sub.state
 	end
