@@ -1,13 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def dashboard
-    if current_user
-      render 'tasks/dashboard'
-    else
-      redirect_to new_session_path
-    end
-  end
+  
 
   # GET /tasks
   # GET /tasks.json

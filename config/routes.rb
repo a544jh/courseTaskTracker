@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   root to: redirect('/dashboard')
 
-  get 'dashboard', to: 'tasks#dashboard'
-  post 'dashboard', to: 'task_submissions#handle_dashboard'
+  get 'dashboard', to: 'dashboard#show'
+  post 'dashboard', to: 'dashboard#update'
 
   get 'signup', to: 'users#new'
   resource :session, only: [:new, :create, :delete]
