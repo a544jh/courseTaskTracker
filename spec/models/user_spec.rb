@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
     expect(user.name).to eq("Pekka")
   end
-  
+
   it "is not saved without a password" do
     user = User.create name:"Pekka"
 
