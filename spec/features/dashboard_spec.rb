@@ -3,8 +3,14 @@ require 'rails_helper'
 describe "Dashboard" do
 	let!(:user) { FactoryGirl.create :user }
 	let!(:course1) { FactoryGirl.create :course, name:"Käjä" }
+	let!(:taskset) { FactoryGirl.create :task_set }
+	let!(:task) { FactoryGirl.create :task}
+	
 
 	before :each do
+		taskset.tasks << task
+		course1.task_sets << taskset
+		user.courses << course1
 		visit signin_path
 		fill_in('username', with:'Pekka')
 		fill_in('password', with:'Foobar1')
@@ -13,12 +19,11 @@ describe "Dashboard" do
 
   it "can mark task as done" do
 		visit dashboard_path
-    save_and_open_page
-		# expect {
-		# 	click_button("Join course")
-		# }.to change{Attendance.count}.from(0).to(1)
-		# expect(user.courses.count).to eq(1)
-		# expect(course1.users.count).to eq(1)
-		# expect(page).to have_button "Leave course"
+		#check 'taskstate_1'
+		find(:css, "#taskstate_1").set(true)
+		save_and_open_page
+		 expect {
+		 	click_button("Submit")
+		 }.to change{task.done_by?(user.id)}.from(false).to(true)
 	end
 end
