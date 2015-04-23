@@ -10,7 +10,7 @@
     <tr>
     <% ts.tasks.each do |t| %>
       <td class="task-<%= t.submission_state(current_user) %>">
-        <%= hidden_field_tag("taskstate[#{t.id}]", "undone") %>
+        <%= hidden_field_tag("taskstate[#{t.id}]", "undone", {id: "taskstate[#{t.id}]_hidden"}) %>
         <%= check_box_tag("taskstate[#{t.id}]", 'done', t.done_by?(current_user.id)) %>
       </td>
     <% end %>

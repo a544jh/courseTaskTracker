@@ -5,7 +5,7 @@ describe "Dashboard" do
 	let!(:course1) { FactoryGirl.create :course, name:"Käjä" }
 	let!(:taskset) { FactoryGirl.create :task_set }
 	let!(:task) { FactoryGirl.create :task}
-	
+
 
 	before :each do
 		taskset.tasks << task
@@ -19,9 +19,8 @@ describe "Dashboard" do
 
   it "can mark task as done" do
 		visit dashboard_path
-		#check 'taskstate_1'
-		find(:css, "#taskstate_1").set(true)
-		save_and_open_page
+		check 'taskstate_1'
+		#find(:css, "#taskstate_1").set(true)
 		 expect {
 		 	click_button("Submit")
 		 }.to change{task.done_by?(user.id)}.from(false).to(true)
