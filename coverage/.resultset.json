@@ -29,6 +29,31 @@
         1,
         null
       ],
+      "/home/axel/github/courseTaskTracker/app/models/task.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        13,
+        13,
+        6,
+        null,
+        7,
+        null,
+        null,
+        1,
+        13,
+        13,
+        8,
+        null,
+        5,
+        null,
+        null,
+        null
+      ],
       "/home/axel/github/courseTaskTracker/app/models/user.rb": [
         1,
         1,
@@ -290,31 +315,6 @@
         null,
         null
       ],
-      "/home/axel/github/courseTaskTracker/app/models/task.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        13,
-        13,
-        6,
-        null,
-        7,
-        null,
-        null,
-        1,
-        13,
-        13,
-        8,
-        null,
-        5,
-        null,
-        null,
-        null
-      ],
       "/home/axel/github/courseTaskTracker/app/models/task_submission.rb": [
         1,
         1,
@@ -322,6 +322,6 @@
         null
       ]
     },
-    "timestamp": 1429913337
+    "timestamp": 1429914035
   }
 }
