@@ -25,4 +25,13 @@ describe "Dashboard" do
 		 	click_button("Submit")
 		 }.to change{task.done_by?(user.id)}.from(false).to(true)
 	end
+
+	it "can mark task as undone" do
+		TaskSubmission.create(user_id:user.id, task_id:task.id, state:'done')
+		visit dashboard_path
+		uncheck 'taskstate_1'
+		 expect {
+		 	click_button("Submit")
+		 }.to change{task.done_by?(user.id)}.from(true).to(false)
+	end
 end

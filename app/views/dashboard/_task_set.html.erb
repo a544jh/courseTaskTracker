@@ -1,6 +1,6 @@
 <div class="well">
-  <%= ts.course.name %> <br>
-  <%= ts.name%> <%= ts.deadline %>
+  <%= link_to ts.course.name, ts.course %> <br>
+  <%= link_to ts.name+" "+ts.deadline.to_formatted_s(:rfc822), ts %>
   <table>
     <tr>
   <% ts.tasks.each do |t| %>
