@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Task, type: :model do
 
   let!(:user) { FactoryGirl.create :user }
 	let!(:course1) { FactoryGirl.create :course, name:"Käjä" }
