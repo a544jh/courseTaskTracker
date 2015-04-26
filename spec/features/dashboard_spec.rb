@@ -34,4 +34,12 @@ describe "Dashboard" do
 		 	click_button("Submit")
 		 }.to change{task.done_by?(user.id)}.from(true).to(false)
 	end
+
+	it "redirects to login page if not logged in" do
+		visit dashboard_path
+		click_link "signout"
+		visit dashboard_path
+		expect(page).to have_content('Sign in')
+	end
+
 end
