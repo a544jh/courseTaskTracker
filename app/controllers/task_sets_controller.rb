@@ -28,17 +28,23 @@ class TaskSetsController < ApplicationController
     @task_set = TaskSet.new(task_set_params)
 
     respond_to do |format|
-      if @task_set.save
-        if @task_set.tasks.empty?
-          @task_set.populate_with_empty_tasks(params[:taskcount])
-          redirect_to edit_task_set_path(id:@task_set.id)
-          return
+      if params[:taskcount].to_i > 0
+        if @task_set.save
+          if @task_set.tasks.empty?
+              @task_set.populate_with_empty_tasks(params[:taskcount])
+              redirect_to edit_task_set_path(id:@task_set.id)
+              return
+            end
+          format.html { redirect_to @task_set, notice: 'Task set was successfully created.' }
+          format.json { render :show, status: :created, location: @task_set }
+        else
+          format.html { render :new }
+          format.json { render json: @task_set.errors, status: :unprocessable_entity }
         end
-        format.html { redirect_to @task_set, notice: 'Task set was successfully created.' }
-        format.json { render :show, status: :created, location: @task_set }
       else
-        format.html { render :new }
-        format.json { render json: @task_set.errors, status: :unprocessable_entity }
+        flash.now[:error] = "Invalid number of tasks"
+        render :new
+        return
       end
     end
   end
