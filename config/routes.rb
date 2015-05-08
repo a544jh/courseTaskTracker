@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :task_sets
 
-  resources :attendances
+  resources :attendances, only: [:create, :destroy]
 
   resources :courses do
     resources :task_sets
