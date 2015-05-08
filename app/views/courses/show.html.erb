@@ -35,7 +35,7 @@
   <tbody>
     <% @course.task_sets.each do |task_set| %>
       <tr>
-        <td><%= task_set.name %></td>
+        <td><%= link_to task_set.name, task_set %></td>
         <td><%= task_set.deadline %></td>
         <td><%= link_to 'Show', task_set %></td>
         <td><%= link_to 'Edit', edit_task_set_path(task_set) %></td>

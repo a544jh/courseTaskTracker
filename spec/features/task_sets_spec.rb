@@ -20,4 +20,14 @@ describe "TaskSet" do
     expect(course1.task_sets.first.tasks.count).to eq(5)
 	end
 
+	it "displays error with negative number of tasks" do
+		visit course_path(course1)
+		click_link('Add task set')
+    fill_in('task_set_name', with:'Laskarit')
+    fill_in('taskcount', with:'-5')
+    click_button('Create Task set')
+		expect(page).to have_content('Invalid number of tasks')
+		expect(course1.task_sets.count).to eq(0)
+	end
+
 end
